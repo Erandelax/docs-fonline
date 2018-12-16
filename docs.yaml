@@ -1,0 +1,150 @@
+langs: # Loaded languages
+  - ru 
+  - en
+
+replace: # In-document variables
+  common: [client,server,mapper]
+  var: variable 
+  prop: property
+  func: function
+  
+api: # Supported types: var, const, funcdef, func, method, prop
+- name: FOnline SDK
+  type: module
+  _:
+  - script: class Item
+    name: Item
+    type: class
+    scope: common
+    _:
+    - script: bool SetScript(ItemInitFunc@+ func)
+      name: Item::SetScript
+      type: method
+      scope: server
+    # server
+    - script: Item@+ AddItem(hash protoId, uint count, uint stackId)
+    - script: array<Item@>@ GetItems(uint stackId)
+    - script: array<const Item@>@ GetItems(uint stackId) const
+    - script: Map@+ GetMapPosition(uint16& hexX, uint16& hexY) const
+    - script: bool ChangeProto(hash protoId)
+    - script: void Animate(uint fromFrame, uint toFrame)
+    - script: bool CallStaticItemFunction(Critter@+ cr, Item@+ item, int param) const
+    - script: bool MoveToDir(uint8 dir)
+    - script: void TransitToHex(uint16 hexX, uint16 hexY, uint8 dir)
+    - script: void TransitToMap(Map@+ map, uint16 hexX, uint16 hexY, uint8 dir)
+    - script: void TransitToGlobal()
+    - script: void TransitToGlobal(array<Critter@>@+ group)
+    - script: void TransitToGlobalGroup(Critter@+ leader)
+    - script: bool IsLife() const
+    - script: bool IsKnockout() const
+    - script: bool IsDead() const
+    - script: bool IsFree() const
+    - script: bool IsBusy() const
+    - script: void Wait(uint ms)
+    - script: void RefreshVisible()
+    - script: void ViewMap(Map@+ map, uint look, uint16 hx, uint16 hy, uint8 dir)
+    - script: uint CountItem(hash protoId) const
+    - script: bool DeleteItem(hash protoId, uint count)
+    - script: Item@+ AddItem(hash protoId, uint count)
+    - script: Item@+ GetItem(uint itemId)
+    - script: const Item@+ GetItem(uint itemId) const
+    - script: Item@+ GetItemByPid(hash protoId)
+    - script: const Item@+ GetItemByPid(hash protoId) const
+    - script: Item@+ GetItemBySlot(uint8 slot)
+    - script: const Item@+ GetItemBySlot(uint8 slot) const
+    - script: Item@+ GetItem(ItemPredicate@+ predicate)
+    - script: const Item@+ GetItem(ItemPredicate@+ predicate) const
+    - script: array<Item@>@ GetItems()
+    - script: array<const Item@>@ GetItems() const
+    - script: array<Item@>@ GetItemsBySlot(uint8 slot)
+    - script: array<const Item@>@ GetItemsBySlot(uint8 slot) const
+    - script: array<Item@>@ GetItems(ItemPredicate@+ predicate)
+    - script: array<const Item@>@ GetItems(ItemPredicate@+ predicate) const
+    - script: void ChangeItemSlot(uint itemId, uint8 slot)
+    - script: void SetCond(int cond)
+    - script: void CloseDialog()
+    - script: array<Critter@>@ GetCritters(bool lookOnMe, int findType) const
+    - script: array<Critter@>@ GetTalkedPlayers() const
+    - script: bool IsSee(Critter@+ cr) const
+    - script: bool IsSeenBy(Critter@+ cr) const
+    - script: bool IsSee(Item@+ item) const
+    - script: void Say(uint8 howSay, string text)
+    - script: void SayMsg(uint8 howSay, uint16 textMsg, uint strNum)
+    - script: void SayMsg(uint8 howSay, uint16 textMsg, uint strNum, string lexems)
+    - script: void SetDir(uint8 dir)
+    - script: void Action(int action, int actionExt, const Item@+ item)
+    - script: void Animate(uint anim1, uint anim2, const Item@+ item, bool clearSequence, bool delayPlay)
+    - script: void SetAnims(int cond, uint anim1, uint anim2)
+    - script: void PlaySound(string soundName, bool sendSelf)
+    - script: void SendCombatResult(array<uint>@+ combatResult)
+    - script: bool IsKnownLoc(bool byId, uint locNum) const
+    - script: bool SetKnownLoc(bool byId, uint locNum)
+    - script: bool UnsetKnownLoc(bool byId, uint locNum)
+    - script: void SetFog(uint16 zoneX, uint16 zoneY, int fog)
+    - script: int GetFog(uint16 zoneX, uint16 zoneY) const
+    - script: void SendItems(const array<const Item@>@+ items, int param = 0)
+    - script: void SendItems(const array<Item@>@+ items, int param = 0)
+    - script: void Disconnect()
+    - script: bool IsOnline()
+    - script: bool SetScript(CritterInitFunc@+ func)
+    - script: bool AddTimeEvent(TimeEventFunc@+ func, uint duration, int identifier)
+    - script: bool AddTimeEvent(TimeEventFunc@+ func, uint duration, int identifier, uint rate)
+    - script: uint GetTimeEvents(int identifier, array<uint>@+ indexes, array<uint>@+ durations, array<uint>@+ rates) const
+    - script: uint GetTimeEvents(array<int>@+ findIdentifiers, array<int>@+ identifiers, array<uint>@+ indexes, array<uint>@+ durations, array<uint>@+ rates) const
+    - script: void ChangeTimeEvent(uint index, uint newDuration, uint newRate)
+    - script: void EraseTimeEvent(uint index)
+    - script: uint EraseTimeEvents(int identifier)
+    - script: uint EraseTimeEvents(array<int>@+ identifiers)
+    - script: void MoveToCritter(Critter@+ cr, uint cut, bool isRun)
+    - script: void MoveToHex(uint16 hexX, uint16 hexY, uint cut, bool isRun)
+    - script: MovingState GetMovingState() const
+    - script: void ResetMovingState(uint& gagId)
+    - script: const string Name
+    - script: const bool IsRunning :197
+    
+    
+  - script: class Critter
+    name: Critter
+    type: class
+    scope: common
+    _:
+    # server
+    - script: bool IsPlayer() const
+    - script: bool IsNpc() const
+    - script: int GetAccess() const
+    - script: bool SetAccess(int access)
+    - script: Map@+ GetMap()
+    - script: const Map@+ GetMap() const
+
+  - script: Map@ CurMap
+    name: CurMap
+    type: var
+    scope: client
+    ru: Возвращает текущую карту
+    
+  - script: Location@ CurLocation
+    name: CurLocation
+    type: var
+    scope: client
+    
+  - script: bool ItemPredicate(const Item@+)
+    name: ItemPredicate
+    type: funcdef
+    scope: server
+    
+  - script: void ItemInitFunc(Item@+, bool)
+    name: ItemInitFunc
+    type: funcdef
+    scope: server
+    
+  - script: void CritterInitFunc(Critter@+, bool)
+    type: funcdef
+    scope: server
+  
+  - script: uint TimeEventFunc(Critter@+,int,uint&)
+    type: funcdef
+    scope: server
+    
+  - script: enum MovingState
+    type: enum
+    scope: server

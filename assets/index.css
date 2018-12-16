@@ -1,0 +1,105 @@
+html {
+    font-family: "Ubuntu Mono", monospace;
+    padding:0;
+    margin:0;
+}
+body {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+.markdown-body{
+    font-size:11pt;
+}
+
+
+.markdown-body pre {
+    margin-bottom:0;
+    margin-top:0;
+    border:none!important;
+    font-size:.95em;
+}
+
+div.element {
+    position:relative;
+    border:1px solid #1d1f20;
+    padding:.5em;
+    background:#191919;
+    color:#ddd;
+}
+div.element{
+    margin-bottom:.5em;
+}
+
+div.element div.element{
+    background:#1d1f20;
+}
+
+.typ:hover,
+.pln:hover{
+    cursor:pointer;
+    font-weight:bold;
+}
+
+@keyframes goto {
+  from {border-color: red;}
+}
+.goto {
+    animation:goto 1s;    
+}
+.meta {
+    position:absolute;
+    top:0;
+    right:0;
+}
+.meta span {
+    margin-right:0.3em;
+    color:#757575;
+}
+.header{
+    font-size:1.2em;
+}
+
+
+/* Tommorow Dark color scheme mimic */
+html,body{
+    background:#1a1a1a;
+}
+
+.prettyprint{
+    min-height:1em;
+}
+.prettyprint {
+    background:#1d1f20;
+    font-family: "Ubuntu Mono", monospace;
+}
+.prettyprint  .kwd{
+    color:#b28ab3;
+}
+.prettyprint  .typ{
+    color:#81A2BE;
+}
+.prettyprint .pln {
+    color:#d9cfc9;
+}
+.prettyprint .lit {
+    color:#DE935F;
+}
+.prettyprint .cst {
+    color:#CED1CF;
+}
+.prettyprint .com {
+    color:#969896;
+}
+.prettyprint .pun {
+    color:#acacac;
+}
+.prettyprint .cst {
+    color:#a25050;
+}
+.prettyprint .cmp {
+    color:#F0C674;
+}
+::-webkit-scrollbar              { background:#212121;height:6px;width:6px }
+::-webkit-scrollbar-button       { width:0;height:0;}
+::-webkit-scrollbar-track        { background:#1f1e1e; }
+::-webkit-scrollbar-thumb        { background:#423d34;border-radius:5px;  }
