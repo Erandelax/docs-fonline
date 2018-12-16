@@ -7,6 +7,8 @@ require(
     "https://fonts.googleapis.com/css?family=Ubuntu+Mono",
     "docs.yaml"
 ).then(function(yaml){
+    console.log(yaml)
+    
     var style = document.createElement("style")
     var filterDom = document.createElement("style")
     var filter = {
